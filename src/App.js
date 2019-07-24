@@ -1,15 +1,16 @@
-import React, { Fragment } from "react";
+import React from "react";
 import GlobalStyle from "./styles/global";
-// import { Provider } from "react-redux";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import Routes from "./routes";
 
 const App = () => {
     return (
-        <Fragment>
+        <Provider store={store}>
             <GlobalStyle />
             <Routes />
-        </Fragment>
+        </Provider>
     );
 };
 
