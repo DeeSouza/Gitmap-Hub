@@ -27,6 +27,7 @@ export const ButtonToggle = styled.button`
     height: 60px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px -2px;
 `;
 
 export default { Sidebar, ButtonToggle };
