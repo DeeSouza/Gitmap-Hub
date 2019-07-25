@@ -30,6 +30,21 @@ class Home extends Component {
         repositoryInput: ""
     };
 
+    componentDidMount() {
+        window.addEventListener("resize", this.resizableMap);
+        this.resizableMap();
+    }
+
+    resizableMap = () => {
+        this.setState({
+            viewport: {
+                ...this.state.viewport,
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        });
+    };
+
     handleMapClick = data => {
         const [lon, lat] = data.lngLat;
 

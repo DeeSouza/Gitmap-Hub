@@ -20,7 +20,9 @@ export const Modal = styled.div`
     position: absolute;
     left: 0;
     top: 0;
-    display: ${props => (props.open ? "flex" : "none")};
+    visibility: ${props => (props.open ? "visible" : "hidden")};
+    transition: all 0.25s ease-in-out;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Titillium Web";
@@ -31,6 +33,9 @@ export const Modal = styled.div`
         background-color: #fff;
         border-radius: 5px;
         padding: 15px;
+        transition: opacity 0.25s ease-in-out, transform 0.15s ease-in;
+        transform: ${props => (props.open ? "scale(1)" : "scale(0)")};
+        opacity: ${props => (props.open ? "1" : "0")};
 
         @media (min-width: 568px) {
             max-width: 300px;
