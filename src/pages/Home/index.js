@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { Main, Modal } from "./styles";
 
 import Drivers from "../../components/Drivers/Drivers";
+import User from "../../components/User/User";
 import { Creators as DriversActions } from "../../store/ducks/drivers/drivers";
 
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -18,15 +19,19 @@ class Home extends Component {
 
     state = {
         viewport: {
-            width: "100%",
-            height: "100%",
+            width: window.innerWidth,
+            height: window.innerHeight,
             latitude: -22.725,
             longitude: -47.6476,
             zoom: 12,
             bearing: 0,
             pitch: 0
         },
-        modal: false,
+        modal: this.props.data.modal,
+        geo: {
+            lon: 0,
+            lat: 0
+        },
         repositoryInput: ""
     };
 
@@ -51,6 +56,10 @@ class Home extends Component {
         this.setState({
             modal: true
         });
+
+        this.setState({
+            geo: { lon, lat }
+        });
     };
 
     handleCancel = e => {
@@ -61,9 +70,30 @@ class Home extends Component {
         });
     };
 
-    handleAddDriver = () => {
-        console.log(this.state.repositoryInput);
+    handleAddDriver = async e => {
+        e.preventDefault();
+
+        const { repositoryInput: user, geo } = this.state;
+
+        await this.props.addDriverRequest({
+            user,
+            geo
+        });
     };
+
+    addMarkerDriver(driver) {
+        return (
+            <Marker
+                latitude={driver.geo.lat}
+                longitude={driver.geo.lon}
+                offsetLeft={-20}
+                offsetTop={-10}
+                key={driver.id}
+            >
+                <User user={driver} />
+            </Marker>
+        );
+    }
 
     render() {
         const TokenMap =
@@ -82,10 +112,14 @@ class Home extends Component {
                         onViewportChange={viewport =>
                             this.setState({ viewport })
                         }
-                    />
+                    >
+                        {this.props.data.drivers.map(driver =>
+                            this.addMarkerDriver(driver)
+                        )}
+                    </ReactMapGL>
 
                     <Modal open={this.state.modal}>
-                        <form action="">
+                        <form onSubmit={this.handleAddDriver}>
                             <h3>Adicionar Novo Usuário</h3>
 
                             <div className="form-group">
@@ -103,17 +137,13 @@ class Home extends Component {
 
                             <div className="form-group group-buttons">
                                 <button
-                                    type="submit"
+                                    type="button"
                                     className="btn-cancel"
                                     onClick={e => this.handleCancel(e)}
                                 >
                                     Cancelar
                                 </button>
-                                <button
-                                    type="button"
-                                    className="btn-save"
-                                    onClick={() => this.handleAddDriver()}
-                                >
+                                <button type="submit" className="btn-save">
                                     Salvar
                                 </button>
                             </div>
@@ -128,7 +158,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-    drivers: state.drivers
+    data: state.drivers
 });
 
 const mapDispatchToProps = dispatch =>

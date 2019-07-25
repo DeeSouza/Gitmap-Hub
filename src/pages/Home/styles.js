@@ -26,6 +26,7 @@ export const Modal = styled.div`
     justify-content: center;
     align-items: center;
     font-family: "Titillium Web";
+    z-index: 3;
 
     form {
         width: 90%;
