@@ -8,8 +8,7 @@ export const Types = {
 // Reducers
 const INITIAL_STATE = {
     drivers: [],
-    error: null,
-    modal: false
+    error: null
 };
 
 export default function drivers(state = INITIAL_STATE, action) {
@@ -19,14 +18,12 @@ export default function drivers(state = INITIAL_STATE, action) {
         case Types.ADD_SUCCESS:
             return {
                 ...state,
-                drivers: [...state.drivers, action.payload.user],
-                modal: false
+                drivers: [...state.drivers, action.payload.user]
             };
         case Types.ADD_FAILURE:
             return {
                 ...state,
-                error: action.payload.error,
-                modal: true
+                error: action.payload.error
             };
         default:
             return state;

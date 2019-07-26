@@ -3,7 +3,7 @@ import { Sidebar, ButtonToggle } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-class Drivers extends Component {
+class SidebarDrivers extends Component {
     state = {
         open: false
     };
@@ -29,4 +29,4 @@ class Drivers extends Component {
     }
 }
 
-export default Drivers;
+export default SidebarDrivers;

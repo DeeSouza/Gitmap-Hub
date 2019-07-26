@@ -1,5 +1,6 @@
 import { call, put, select } from "redux-saga/effects";
 import { Creators as DriversActions } from "../../ducks/drivers/drivers";
+import { Creators as ModalActions } from "../../ducks/adduser/adduser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,6 +41,12 @@ export function* addDriver(action) {
             toast.success("Usuário adicionado com sucesso!", {
                 position: toast.POSITION.TOP_RIGHT
             });
+
+            yield put(
+                ModalActions.addUserHide({
+                    modal: false
+                })
+            );
         }
     } catch (error) {
         yield put(
