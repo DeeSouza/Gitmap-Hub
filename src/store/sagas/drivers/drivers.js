@@ -33,6 +33,7 @@ export function* addDriver(action) {
                 following: data.following,
                 name: data.name,
                 login: data.login,
+                url: data.url,
                 geo: action.payload.geo
             };
 

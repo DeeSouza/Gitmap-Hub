@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Sidebar, ButtonToggle } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import ListUsers from "../ListUsers";
 
 class SidebarDrivers extends Component {
     state = {
-        open: false
+        open: true
     };
 
     handleOpenSidebar(action) {
@@ -17,6 +19,10 @@ class SidebarDrivers extends Component {
     render() {
         return (
             <Sidebar open={this.state.open}>
+                {this.props.data.drivers.map(user => (
+                    <ListUsers key={user.id} user={user} />
+                ))}
+
                 <ButtonToggle
                     onClick={() => this.handleOpenSidebar(!this.state.open)}
                 >
@@ -29,4 +35,8 @@ class SidebarDrivers extends Component {
     }
 }
 
-export default SidebarDrivers;
+const mapStateToProps = state => ({
+    data: state.drivers
+});
+
+export default connect(mapStateToProps)(SidebarDrivers);

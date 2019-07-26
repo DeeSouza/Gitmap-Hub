@@ -12,6 +12,7 @@ export const Sidebar = styled.div`
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px -2px;
     border-radius: 8px;
     z-index: 2;
+    padding: 15px 20px;
     transform: ${props =>
         props.open ? "translateX(0px)" : "translateX(-335px)"};
     transition: all 0.25s ease-in-out;
