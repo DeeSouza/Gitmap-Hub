@@ -4,7 +4,7 @@ import { Container } from "./styles";
 const UserInfo = ({ user }) => (
     <Container>
         <div className="header">
-            <div className="name">{user.name}</div>
+            <div className="name">{user.name ? user.name : "Anonymous"}</div>
             <div className="bio">{user.bio}</div>
             <div className="numbers">
                 <div>
