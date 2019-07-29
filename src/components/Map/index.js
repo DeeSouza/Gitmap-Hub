@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import User from "../../components/User/User";
+import UserInfo from "../../components/UserInfo/UserInfo";
 import { Creators as ModalActions } from "../../store/ducks/adduser/adduser";
 
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -26,7 +27,8 @@ class Map extends Component {
             zoom: 12,
             bearing: 0,
             pitch: 0
-        }
+        },
+        popUpInfo: null
     };
 
     componentDidMount() {
@@ -65,8 +67,35 @@ class Map extends Component {
                 offsetTop={-10}
                 key={driver.id}
             >
-                <User user={driver} />
+                <User
+                    user={driver}
+                    onClick={() =>
+                        this.setState({
+                            popUpInfo: driver
+                        })
+                    }
+                />
             </Marker>
+        );
+    }
+
+    addPopupDriver() {
+        const { popUpInfo } = this.state;
+
+        return (
+            this.state.popUpInfo && (
+                <Popup
+                    tipSize={5}
+                    anchor="top"
+                    longitude={popUpInfo.geo.lon}
+                    latitude={popUpInfo.geo.lat}
+                    offsetTop={30}
+                    closeOnClick={false}
+                    onClose={() => this.setState({ popUpInfo: null })}
+                >
+                    <UserInfo user={popUpInfo} />
+                </Popup>
+            )
         );
     }
 
@@ -84,6 +113,8 @@ class Map extends Component {
                 {this.props.data.drivers.map(driver =>
                     this.addMarkerDriver(driver)
                 )}
+
+                {this.addPopupDriver()}
             </ReactMapGL>
         );
     }

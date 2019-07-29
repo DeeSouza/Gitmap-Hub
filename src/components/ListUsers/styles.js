@@ -30,13 +30,20 @@ export const Line = styled.div`
             flex-direction: column;
             margin-left: 15px;
         }
+    }
 
-        &.remove {
-            justify-self: flex-end;
-            margin-left: auto;
-            padding: 0px 10px;
-            color: #f55;
-        }
+    button.remove {
+        justify-self: flex-end;
+        margin-left: auto;
+        padding: 0px 10px;
+        color: #f55;
+        border: none;
+        background: none;
+        outline: none;
+        width: auto;
+        height: 16px;
+        font-size: 16px;
+        cursor: pointer;
     }
 
     a {

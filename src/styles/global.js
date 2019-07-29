@@ -12,6 +12,23 @@ const GlobalStyle = createGlobalStyle`
     body{
         text-rendering: optimizeLegibility !important;
         -webkit-font-smoothing: antialiased !important;
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
+    }
+
+    .toast-success{
+        background: #dfffdb!important;
+        color: #006f23!important;
+    }
+
+    .toast-success-progress{
+        background: #029600!important;
+    }
+
+    .mapboxgl-popup-close-button{
+        font-size: 17px;
+        top: 8px !important;
+        right: 8px !important;
+        width: 20px;
     }
 `;
 

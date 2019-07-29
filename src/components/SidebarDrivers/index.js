@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Sidebar, ButtonToggle } from "./styles";
+import { Sidebar, ButtonToggle, NoUser, ScrollList } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
@@ -16,12 +16,27 @@ class SidebarDrivers extends Component {
         });
     }
 
+    noUsers() {
+        return (
+            <NoUser>
+                <h4>Você ainda não adicionou nenhum usuário no mapa.</h4>
+                <h5>
+                    Clique em algum lugar do mapa para adicionar um usuário.
+                </h5>
+            </NoUser>
+        );
+    }
+
     render() {
         return (
             <Sidebar open={this.state.open}>
-                {this.props.data.drivers.map(user => (
-                    <ListUsers key={user.id} user={user} />
-                ))}
+                <ScrollList has={this.props.data.drivers.length}>
+                    {this.props.data.drivers.map(user => (
+                        <ListUsers key={user.id} user={user} />
+                    ))}
+                </ScrollList>
+
+                {this.props.data.drivers.length === 0 && this.noUsers()}
 
                 <ButtonToggle
                     onClick={() => this.handleOpenSidebar(!this.state.open)}

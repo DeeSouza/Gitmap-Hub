@@ -25,6 +25,13 @@ export default function drivers(state = INITIAL_STATE, action) {
                 ...state,
                 error: action.payload.error
             };
+        case Types.DEL_REQUEST:
+            return {
+                ...state,
+                drivers: state.drivers.filter(
+                    driver => driver.id !== action.payload.id
+                )
+            };
         default:
             return state;
     }
@@ -43,5 +50,9 @@ export const Creators = {
     addDriverFailure: error => ({
         type: Types.ADD_FAILURE,
         payload: { error }
+    }),
+    addDriverDelete: id => ({
+        type: Types.DEL_REQUEST,
+        payload: { id }
     })
 };

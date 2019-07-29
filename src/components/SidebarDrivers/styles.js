@@ -12,7 +12,6 @@ export const Sidebar = styled.div`
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px -2px;
     border-radius: 8px;
     z-index: 2;
-    padding: 15px 20px;
     transform: ${props =>
         props.open ? "translateX(0px)" : "translateX(-335px)"};
     transition: all 0.25s ease-in-out;
@@ -31,4 +30,23 @@ export const ButtonToggle = styled.button`
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px -2px;
 `;
 
-export default { Sidebar, ButtonToggle };
+export const NoUser = styled.div`
+    padding: 0px 20px;
+
+    h4 {
+        color: #e02a2a;
+    }
+
+    h5 {
+        margin-top: 10px;
+        color: #000;
+    }
+`;
+
+export const ScrollList = styled.div`
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: ${props => (props.open ? "15px 20px" : "10px 20px")};
+`;
+
+export default { Sidebar, ButtonToggle, NoUser, ScrollList };

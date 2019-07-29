@@ -67,13 +67,22 @@ export const Modal = styled.div`
                     font-family: "Titillium Web";
                     font-weight: bold;
                     border: none;
+                    transition: all 0.25s ease-in-out;
 
                     &.btn-cancel {
-                        background-color: #ff6767;
+                        background-color: #ff4545;
+
+                        &:hover {
+                            background-color: #ff6767;
+                        }
                     }
 
                     &.btn-save {
                         background-color: #2196f3;
+
+                        &:hover {
+                            background-color: #40a8fb;
+                        }
                     }
                 }
             }

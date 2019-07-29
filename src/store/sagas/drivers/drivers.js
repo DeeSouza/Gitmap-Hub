@@ -15,13 +15,9 @@ export function* addDriver(action) {
         );
 
         if (isDuplicated) {
-            yield put(
-                DriversActions.addDriverFailure(
-                    "Usuário não encontrado no GitHub."
-                )
-            );
+            yield put(DriversActions.addDriverFailure("Usuário duplicado."));
 
-            toast.warn(`O usuário ${data.name} já foi adicionado ao mapa.`, {
+            toast.warn(`😅 O usuário ${data.name} já foi adicionado ao mapa.`, {
                 position: toast.POSITION.TOP_RIGHT
             });
         } else {
@@ -33,14 +29,17 @@ export function* addDriver(action) {
                 following: data.following,
                 name: data.name,
                 login: data.login,
-                url: data.url,
+                url: data.html_url,
+                public_repos: data.public_repos,
                 geo: action.payload.geo
             };
 
             yield put(DriversActions.addDriverSuccess(user));
 
-            toast.success("Usuário adicionado com sucesso!", {
-                position: toast.POSITION.TOP_RIGHT
+            toast("Uhuuul! Usuário adicionado! ✅", {
+                position: toast.POSITION.TOP_RIGHT,
+                className: "toast-success",
+                progressClassName: "toast-success-progress"
             });
 
             yield put(
@@ -54,7 +53,7 @@ export function* addDriver(action) {
             DriversActions.addDriverFailure("Usuário não encontrado no GitHub.")
         );
 
-        toast.error("Usuário não encontrado no Github!", {
+        toast.error("Que pena! 😔 Usuário não encontrado.", {
             position: toast.POSITION.TOP_RIGHT
         });
     }
