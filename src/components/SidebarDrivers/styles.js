@@ -31,7 +31,7 @@ export const ButtonToggle = styled.button`
 `;
 
 export const NoUser = styled.div`
-    padding: 0px 20px;
+    padding: 15px 20px;
 
     h4 {
         color: #e02a2a;
@@ -46,7 +46,27 @@ export const NoUser = styled.div`
 export const ScrollList = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
-    padding: ${props => (props.open ? "15px 20px" : "10px 20px")};
+    padding: 15px 20px;
+    display: ${props => (props.has ? "block" : "none")};
+    position: relative;
+    height: 100%;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #b7b9bc;
+        border-radius: 15px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #636363;
+    }
 `;
 
 export default { Sidebar, ButtonToggle, NoUser, ScrollList };

@@ -30,7 +30,7 @@ class SidebarDrivers extends Component {
     render() {
         return (
             <Sidebar open={this.state.open}>
-                <ScrollList has={this.props.data.drivers.length}>
+                <ScrollList has={this.props.data.drivers.length > 0}>
                     {this.props.data.drivers.map(user => (
                         <ListUsers key={user.id} user={user} />
                     ))}
