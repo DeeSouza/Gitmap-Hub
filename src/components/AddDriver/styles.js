@@ -55,6 +55,7 @@ export const Modal = styled.div`
                     color: #a7a7a7;
                     padding: 5px;
                     font-weight: 100;
+                    text-transform: lowercase;
                     font-family: "Titillium Web";
                 }
 
