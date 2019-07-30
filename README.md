@@ -17,13 +17,7 @@ yarn
 
 ```sh
 yarn start
-```
-
-## Run tests
-
-```sh
-npm run test
-```
+``´
 
 ## Preview GitMap Hub
 
