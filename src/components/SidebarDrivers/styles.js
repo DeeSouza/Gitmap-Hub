@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Sidebar = styled.div`
     height: 97%;
-    width: 320px;
+    width: 250px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -13,8 +13,14 @@ export const Sidebar = styled.div`
     border-radius: 8px;
     z-index: 2;
     transform: ${props =>
-        props.open ? "translateX(0px)" : "translateX(-335px)"};
+        props.open ? "translateX(0px)" : "translateX(-265px)"};
     transition: all 0.25s ease-in-out;
+
+    @media (min-width: 400px) {
+        width: 320px;
+        transform: ${props =>
+            props.open ? "translateX(0px)" : "translateX(-335px)"};
+    }
 `;
 
 export const ButtonToggle = styled.button`

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -63,7 +65,11 @@ class AddDriver extends Component {
                             Cancelar
                         </button>
                         <button type="submit" className="btn-save">
-                            Salvar
+                            {this.props.loading ? (
+                                <FontAwesomeIcon icon={faSpinner} spin />
+                            ) : (
+                                "Salvar"
+                            )}
                         </button>
                     </div>
                 </form>
@@ -74,7 +80,8 @@ class AddDriver extends Component {
 
 const mapStateToProps = state => ({
     modal: state.adduser.modal,
-    geo: state.adduser.geo
+    geo: state.adduser.geo,
+    loading: state.drivers.loading
 });
 
 const mapDispatchToProps = dispatch =>

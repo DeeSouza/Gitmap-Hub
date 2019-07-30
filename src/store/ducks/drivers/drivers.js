@@ -8,22 +8,25 @@ export const Types = {
 // Reducers
 const INITIAL_STATE = {
     drivers: [],
-    error: null
+    error: null,
+    loading: false
 };
 
 export default function drivers(state = INITIAL_STATE, action) {
     switch (action.type) {
         case Types.ADD_REQUEST:
-            return { ...state };
+            return { ...state, loading: true };
         case Types.ADD_SUCCESS:
             return {
                 ...state,
-                drivers: [...state.drivers, action.payload.user]
+                drivers: [...state.drivers, action.payload.user],
+                loading: false
             };
         case Types.ADD_FAILURE:
             return {
                 ...state,
-                error: action.payload.error
+                error: action.payload.error,
+                loading: false
             };
         case Types.DEL_REQUEST:
             return {
