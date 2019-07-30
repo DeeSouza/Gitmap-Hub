@@ -5,7 +5,7 @@
 
 > Esse projeto é um desafio proposto pela RocketSeat no Bootcamp. Nesse site é possível procurar por usuários do Github e adicioná-los em algum lugar do mapa que aparece ao entrar no site.
 
-### 🏠 [Online Preview](gitmaphub.surge.sh)
+### 🏠 [Online Preview](https://gitmaphub.surge.sh)
 
 ## Install
 
