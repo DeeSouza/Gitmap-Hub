@@ -1,11 +1,11 @@
-<h1 align="center">Welcome to GitMap Hub 👋</h1>
+<h1 align="center">GitMap Hub 👋</h1>
 <p>
   <img src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
 > Esse projeto é um desafio proposto pela RocketSeat no Bootcamp. Nesse site é possível procurar por usuários do Github e adicioná-los em algum lugar do mapa que aparece ao entrar no site.
 
-### 🏠 [Homepage](gitmaphub.surge.sh)
+### 🏠 [Online Preview](gitmaphub.surge.sh)
 
 ## Install
 
@@ -25,15 +25,7 @@ yarn start
 npm run test
 ```
 
-## Author
+## Preview GitMap Hub
 
-👤 **Diego Souza**
+![Preview GitMap Hub](/public/GitMapGif.gif)
 
-* Github: [@DeeSouza](https://github.com/DeeSouza)
-
-## Show your support
-
-Give a ⭐️ if this project helped you !
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
