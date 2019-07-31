@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Profile } from "./styles";
+import { PropTypes } from "prop-types";
 
 export class User extends Component {
     render() {
@@ -11,5 +12,12 @@ export class User extends Component {
         );
     }
 }
+
+User.propTypes = {
+    onClick: PropTypes.func,
+    user: PropTypes.shape({
+        avatar_url: PropTypes.string
+    })
+};
 
 export default User;

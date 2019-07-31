@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "./styles";
+import PropTypes from "prop-types";
 
 const UserInfo = ({ user }) => (
     <Container>
@@ -23,5 +24,13 @@ const UserInfo = ({ user }) => (
         </div>
     </Container>
 );
+
+UserInfo.propTypes = {
+    user: PropTypes.shape({
+        public_repos: PropTypes.number,
+        following: PropTypes.number,
+        followers: PropTypes.number
+    })
+};
 
 export default UserInfo;

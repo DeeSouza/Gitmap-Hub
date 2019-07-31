@@ -5,6 +5,7 @@ import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import ListUsers from "../ListUsers";
 
+import { PropTypes } from "prop-types";
 class SidebarDrivers extends Component {
     state = {
         open: true
@@ -53,5 +54,15 @@ class SidebarDrivers extends Component {
 const mapStateToProps = state => ({
     data: state.drivers
 });
+
+SidebarDrivers.propTypes = {
+    open: PropTypes.bool,
+    user: PropTypes.shape({
+        id: PropTypes.number
+    }),
+    data: PropTypes.shape({
+        drivers: PropTypes.array
+    })
+};
 
 export default connect(mapStateToProps)(SidebarDrivers);

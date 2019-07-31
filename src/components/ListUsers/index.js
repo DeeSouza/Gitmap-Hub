@@ -9,6 +9,8 @@ import { faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
+import { PropTypes } from "prop-types";
+
 const MySwal = withReactContent(Swal);
 
 class ListUsers extends Component {
@@ -36,29 +38,24 @@ class ListUsers extends Component {
     };
 
     render() {
+        const { user } = this.props;
+
         return (
             <Line>
                 <div className="image">
-                    <img
-                        src={this.props.user.avatar_url}
-                        alt={this.props.user.name}
-                    />
+                    <img src={user.avatar_url} alt={user.name} />
                 </div>
                 <div className="info">
-                    <strong>{this.props.user.name}</strong>
-                    <small>{this.props.user.login}</small>
+                    <strong>{user.name}</strong>
+                    <small>{user.login}</small>
                 </div>
                 <button
                     className="remove"
-                    onClick={() => this.handleDelete(this.props.user.id)}
+                    onClick={() => this.handleDelete(user.id)}
                 >
                     <FontAwesomeIcon icon={faTimes} />
                 </button>
-                <a
-                    href={this.props.user.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href={user.url} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faChevronRight} />
                 </a>
             </Line>
@@ -68,6 +65,18 @@ class ListUsers extends Component {
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(DriverActions, dispatch);
+
+ListUsers.propTypes = {
+    handleDelete: PropTypes.func,
+    addDriverDelete: PropTypes.func,
+    user: PropTypes.shape({
+        name: PropTypes.string,
+        avatar_url: PropTypes.string,
+        login: PropTypes.string,
+        id: PropTypes.number,
+        url: PropTypes.string
+    })
+};
 
 export default connect(
     null,

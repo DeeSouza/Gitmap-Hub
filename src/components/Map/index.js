@@ -3,9 +3,11 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import User from "../../components/User/User";
-import UserInfo from "../../components/UserInfo/UserInfo";
+import User from "../../components/User";
+import UserInfo from "../../components/UserInfo";
 import { Creators as ModalActions } from "../../store/ducks/adduser/adduser";
+
+import { PropTypes } from "prop-types";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -126,6 +128,40 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(ModalActions, dispatch);
+
+Map.propTypes = {
+    viewport: PropTypes.shape({
+        width: PropTypes.number,
+        height: PropTypes.number,
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        zoom: PropTypes.number,
+        bearing: PropTypes.number,
+        pitch: PropTypes.number
+    }),
+    popUpInfo: PropTypes.oneOfType([PropTypes.bool]),
+    data: PropTypes.shape({
+        drivers: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                avatar_url: PropTypes.string,
+                bio: PropTypes.string,
+                followers: PropTypes.number,
+                following: PropTypes.number,
+                name: PropTypes.string,
+                login: PropTypes.string,
+                url: PropTypes.string,
+                public_repos: PropTypes.number,
+                geo: PropTypes.shape({
+                    lon: PropTypes.number,
+                    lat: PropTypes.number
+                })
+            })
+        )
+    }),
+    handleMapClick: PropTypes.func,
+    addUserShow: PropTypes.func
+};
 
 export default connect(
     mapStateToProps,

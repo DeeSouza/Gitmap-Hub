@@ -92,6 +92,18 @@ const mapDispatchToProps = dispatch =>
         dispatch
     );
 
+AddDriver.propTypes = {
+    user: PropTypes.string,
+    modal: PropTypes.bool,
+    geo: PropTypes.shape({
+        lon: PropTypes.number,
+        lat: PropTypes.number
+    }),
+    loading: PropTypes.bool,
+    addUserHide: PropTypes.func,
+    addDriverRequest: PropTypes.func
+};
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
