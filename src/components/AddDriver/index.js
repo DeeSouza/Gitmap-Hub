@@ -8,6 +8,8 @@ import { bindActionCreators } from "redux";
 import { Creators as ModalActions } from "../../store/ducks/adduser/adduser";
 import { Creators as DriverActions } from "../../store/ducks/drivers/drivers";
 
+import { PropTypes } from "prop-types";
+
 class AddDriver extends Component {
     state = {
         user: ""
