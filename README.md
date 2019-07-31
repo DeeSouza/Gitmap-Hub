@@ -10,16 +10,15 @@
 ## Install
 
 ```sh
-yarn 
+yarn
 ```
 
 ## Usage
 
 ```sh
 yarn start
-``´
+```
 
 ## Preview GitMap Hub
 
 ![Preview GitMap Hub](public/GitMapGif.gif)
-
