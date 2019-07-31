@@ -21,5 +21,5 @@ yarn start
 
 ## Preview GitMap Hub
 
-![Preview GitMap Hub](/public/GitMapGif.gif)
+![Preview GitMap Hub](public/GitMapGif.gif)
 
